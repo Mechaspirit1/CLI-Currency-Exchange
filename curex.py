@@ -22,15 +22,15 @@ def rate_list():
 def currency_exchange():
     primary_currency = input("Currency to be converted from: ").upper()
     secondary_currency = input("Currency to be converted to: ").upper()
-    ammount = float(input("Value to be converted: "))
+    amount = float(input("Value to be converted: "))
 
     try:
         response = requests.get(f"https://open.er-api.com/v6/latest/{primary_currency}")
         resParsed = response.json()
         rate = resParsed['rates'][secondary_currency]
-        conversion = ammount*rate
+        conversion = amount*rate
 
-        print(f"Current exhange rate: {secondary_currency}:{round(rate, 2)}")
+        print(f"Current exchange rate: {secondary_currency}:{round(rate, 2)}")
         print(f"Value conversion: {secondary_currency}:{round(conversion, 2)}")
 
     except KeyError:
